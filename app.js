@@ -87,6 +87,10 @@ function type(e) {
         return
     }
     
+        // to prevent multiple operations at the same time
+    if ((e.target.classList.contains('operation-%') || e.target.classList.contains('operation-÷') || e.target.classList.contains('operation-x') || e.target.classList.contains('operation--') || e.target.classList.contains('operation-+')) && (display.textContent.includes('÷') || display.textContent.includes('%') || display.textContent.includes('x') || display.textContent.includes('+') || display.textContent.includes('-') || display.textContent.includes('x'))){
+        return
+    }
 
     if (e.target.classList.contains('operation-%')) {
         if (display.textContent[display.textContent.length-1] === '%') {
@@ -234,6 +238,10 @@ function keypress(e) {
         return
     }
     
+    // to prevent multiple operations at the same time
+    if ((e.key === '+' || e.key === '-' || e.key === 'x' || e.key === '/' || e.key === '%') && (display.textContent.includes('÷') || display.textContent.includes('%') || display.textContent.includes('x') || display.textContent.includes('+') || display.textContent.includes('-') || display.textContent.includes('x'))){
+        return
+    }
 
     if (e.key === '%') {
         if (display.textContent[display.textContent.length-1] === '%') {
